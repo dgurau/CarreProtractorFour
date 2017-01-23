@@ -1,7 +1,5 @@
 var HomePage = function(){
 
-	
-	
 };
 
 //WebElements

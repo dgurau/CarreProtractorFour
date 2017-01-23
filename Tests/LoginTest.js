@@ -2,20 +2,19 @@
 describe("Login Tests", function(){
 	
 	var homePage = require('../PageObjects/HomePage.js');
-
-
-	homePage.getAdress();
-    
+    var dataItems = require('../AutomationFrameWork/DataItems.js');
+    var base = require('../AutomationFrameWork/BaseLogin.js');
 	
 	it('Good credentials',function(){
 		
 		console.log("Login using Valid credentials...");
 
+        base.loginAs(dataItems.validUsernname,dataItems.validPassword);
 
-		homePage.clickMyAcc();
-		homePage.setEmail('cojoacesuport@gmail.com');
-		homePage.setPassword('password');
-		homePage.clickLogin();
+//		homePage.clickMyAcc();
+//		homePage.setEmail('cojoacesuport@gmail.com');
+//		homePage.setPassword('password');
+//		homePage.clickLogin();
 
 		expect(homePage.getMyAccName()).toContain("Cojoace Cojoacele");
 		expect(homePage.getInfoMessage()).toContain("Bine ai venit!");
