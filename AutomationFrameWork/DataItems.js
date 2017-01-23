@@ -2,7 +2,7 @@ var DataItems = function(){
 
 };
 
-var validUsernname = "cojoacesuport@gmail.com"
-var validPassword = "password";
+DataItems.validUsernname = "cojoacesuport@gmail.com";
+DataItems.validPassword = "password";
 
 module.exports = new DataItems();
