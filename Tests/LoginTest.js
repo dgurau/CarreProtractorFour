@@ -4,7 +4,11 @@ describe("Login Tests", function(){
 	var homePage = require('../PageObjects/HomePage.js');
     var DataItems = require('../AutomationFrameWork/DataItems.js');
     var base = require('../AutomationFrameWork/BaseLogin.js');
-	
+
+	/*beforeEach(function(){
+	    homePage.getAdress();
+	});*/
+
 	it('Login Good credentials',function(){
 		console.log("Login using Valid credentials...");
 
