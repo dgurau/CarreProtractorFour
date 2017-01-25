@@ -4,11 +4,12 @@ var BaseLogin = function(){
 
 var homePage = require('../PageObjects/HomePage.js');
 
-BaseLogin.protype.loginAs = function(username,password){
+BaseLogin.prototype.loginAs = function(username,password){
     homePage.getAdress();
     homePage.clickMyAcc();
     homePage.setEmail(username);
     homePage.setPassword(password);
+    homePage.clickLogin();
 };
 
 module.exports = new BaseLogin();

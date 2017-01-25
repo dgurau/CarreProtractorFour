@@ -2,86 +2,67 @@
 describe("Login Tests", function(){
 	
 	var homePage = require('../PageObjects/HomePage.js');
-    var dataItems = require('../AutomationFrameWork/DataItems.js');
+    var DataItems = require('../AutomationFrameWork/DataItems.js');
     var base = require('../AutomationFrameWork/BaseLogin.js');
 	
-	it('Good credentials',function(){
-		
+	it('Login Good credentials',function(){
 		console.log("Login using Valid credentials...");
 
-        base.loginAs(dataItems.validUsernname,dataItems.validPassword);
+        base.loginAs(DataItems.validUsername,DataItems.validPassword);
 
-//		homePage.clickMyAcc();
-//		homePage.setEmail('cojoacesuport@gmail.com');
-//		homePage.setPassword('password');
-//		homePage.clickLogin();
-
-		expect(homePage.getMyAccName()).toContain("Cojoace Cojoacele");
-		expect(homePage.getInfoMessage()).toContain("Bine ai venit!");
-
-		console.log("User Logged in. Checking Log out function");
-
-		homePage.clickLogout();
-
-		expect(homePage.getMyAccName()).toContain("Contul meu");
-		expect(homePage.getInfoMessage()).toContain("Ai iesit din cont");
-		
-		console.log("User Logged out.");
-
-		//browser.pause();
+		expect(homePage.getMyAccName()).toEqual("Cojoace Cojoacele");
+		expect(homePage.getInfoMessage()).toContain(DataItems.welcomeMessage);
 	});
+
+	it('Log Out functionality',function(){
+        console.log("User Logged in. Checking Log out function");
+
+        homePage.clickLogout();
+
+        expect(homePage.getMyAccName()).toEqual("Contul meu");
+        expect(homePage.getInfoMessage()).toContain(DataItems.logoutMessage);
+
+        console.log("User Logged out.");
+    });
 
 	it('Wrong credentials',function(){
-		
-		console.log("Login using invalid password...");
 
-		homePage.clickMyAcc();
+	    console.log("Login using invalid password...");
+        base.loginAs(DataItems.validUsername,"dfdsafadsfsd");
 
-		homePage.setEmail('cojoacesuport@gmail.com');
-		homePage.setPassword('wrongpassword');
-		homePage.clickLogin();
-
-		expect(homePage.getInfoMessage()).toContain("Ceva nu a fost introdus bine... mai incearca o data");
-		
-		console.log("Login using invalid username...");
-		
-		homePage.clearUsername();
-		homePage.clearPassword();
-		homePage.setEmail('something@sadasd.com');
-		homePage.setPassword('password');
-		homePage.clickLogin();
-
-		expect(homePage.getInfoMessage()).toContain("Ceva nu a fost introdus bine... mai incearca o data");
-
-		console.log("Login using empty credentials...");
-		
-		homePage.clearUsername();
-		homePage.clearPassword();
-		homePage.setEmail('');
-		homePage.setPassword('');
-		homePage.clickLogin();
-
-		expect(homePage.getInfoMessage()).toContain("Ceva nu a fost introdus bine... mai incearca o data");
-		
-		console.log("Login using empty password...");
-		
-		homePage.clearUsername();
-		homePage.clearPassword();
-		homePage.setEmail('cojoacesuport@gmail.com');
-		homePage.setPassword('');
-		homePage.clickLogin();
-
-		expect(homePage.getInfoMessage()).toContain("Ceva nu a fost introdus bine... mai incearca o data");
-		
-		console.log("Login using empty username...");
-
-		homePage.clearUsername();
-		homePage.clearPassword();
-		homePage.setEmail('');
-		homePage.setPassword('password');
-		homePage.clickLogin();
-
-		expect(homePage.getInfoMessage()).toContain("Ceva nu a fost introdus bine... mai incearca o data");
+        expect(homePage.getInfoMessage()).toContain(DataItems.failureMessage);
 	});
+
+    it('Wrong credentials',function(){
+
+        console.log("Login using invalid username...");
+        base.loginAs("ddsafasd",DataItems.validPassword);
+
+        expect(homePage.getInfoMessage()).toContain(DataItems.failureMessage);
+    });
+
+    it('Wrong credentials',function(){
+
+        console.log("Login using empty credentials...");
+        base.loginAs("","");
+
+        expect(homePage.getInfoMessage()).toContain(DataItems.failureMessage);
+    });
+
+    it('Wrong credentials',function(){
+
+        console.log("Login using empty password...");
+        base.loginAs(DataItems.validUsername,"");
+
+        expect(homePage.getInfoMessage()).toContain(DataItems.failureMessage);
+    });
+
+    it('Wrong credentials',function(){
+
+        console.log("Login using empty username...");
+        base.loginAs("",DataItems.validPassword);
+
+        expect(homePage.getInfoMessage()).toContain(DataItems.failureMessage);
+    });
 	
 });
