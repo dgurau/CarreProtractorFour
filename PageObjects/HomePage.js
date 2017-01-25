@@ -11,10 +11,6 @@ var logoutButton = element(by.xpath("//*[@class = 'user-account-data']/span"));
 var informativeMessage = element(by.xpath("//*[@class = 'message ng-binding']"));
 var myAccName = element(by.xpath("//*[@id='login-dropdown-toggle']/span/span"));
 
-//URLs
-HomePage.prototype.getAdress = function() {
-	browser.get('https://www.carrefour-online.ro/');
-};
 
 //Clicks
 HomePage.prototype.clickMyAcc = function(){
