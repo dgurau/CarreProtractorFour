@@ -2,15 +2,15 @@ var BaseLogin = function(){
 
 }
 
-var homePage = require('../PageObjects/HomePage.js');
+var myAccountPage = require('../PageObjects/MyAccountPage.js');
 var commonTask = require('../AutomationFrameWork/CommonTask.js');
 
 BaseLogin.prototype.loginAs = function(username,password){
     commonTask.getAdress();
-    homePage.clickMyAcc();
-    homePage.setEmail(username);
-    homePage.setPassword(password);
-    homePage.clickLogin();
+    myAccountPage.clickMyAcc();
+    myAccountPage.setEmail(username);
+    myAccountPage.setPassword(password);
+    myAccountPage.clickLogin();
 };
 
 module.exports = new BaseLogin();

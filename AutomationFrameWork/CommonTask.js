@@ -2,7 +2,7 @@ var CommonTask = function(){
 
 }
 
-var homePage = require('../PageObjects/HomePage.js');
+var myAccountPage = require('../PageObjects/MyAccountPage.js');
 
 //URLs
 CommonTask.prototype.getAdress = function() {
