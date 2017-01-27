@@ -10,7 +10,5 @@ describe("",function(){
         base.loginAs(DataItems.validUsername,DataItems.validPassword);
         homePage.setSearchField("mici");
         homePage.clickSearchButton();
-        
-        browser.pause();
     });
 });

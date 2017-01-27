@@ -10,7 +10,7 @@ describe("My Space",function(){
         base.loginAs(DataItems.validUsername,DataItems.validPassword);
         myAccountPage.clickMySpace();
 
-        mySpacePage.clickEditFirstName();
+        //mySpacePage.clickEditFirstName();
         
     
 

@@ -5,8 +5,9 @@ exports.config = {
     // Capabilities to be passed to the webdriver instance.
     multiCapabilities: [
         {
-          'browserName' : 'chrome'
-
+          'browserName' : 'chrome',
+          shardTestFiles: true,
+          maxInstances: 3,
         },
         /*{
           'browserName' : 'firefox'
@@ -14,8 +15,7 @@ exports.config = {
     ],
 
     //How many Tests to run at once
-    shardTestFiles: true,
-    maxInstances: 2,
+    
 
     // Framework to use. Jasmine is recommended.
     framework: 'jasmine',
